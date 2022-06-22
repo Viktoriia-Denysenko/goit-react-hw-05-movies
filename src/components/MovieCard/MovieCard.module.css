@@ -1,0 +1,40 @@
+.wrapper{
+    display: flex;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.infoWrapper{
+    margin-left: 30px;
+}
+
+.title{
+    font-size: 50px;
+}
+
+.subtitle{
+    font-size: 40px;
+}
+
+.data{
+    margin-left: 30px;
+}
+
+.info{
+    font-size: 24px;
+}
+
+.genreList{
+    list-style: none;
+    padding: 0;
+}
+
+.listItem{
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+.listItem:last-child {
+    margin-right: 0;
+}
