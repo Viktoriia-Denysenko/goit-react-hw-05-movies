@@ -38,7 +38,7 @@ function MovieDetails() {
       </Link>
       {loading && <Loader />}
       {movie && <MovieCard movie={movie} />}
-      <Cast id={movieId} />
+      {/* <Cast id={movieId} /> */}
     </main>
   );
 }

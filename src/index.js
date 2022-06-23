@@ -9,7 +9,7 @@ const Movies = lazy(() => import('./components/Movies/Movies'));
 const MovieDetails = lazy(() =>
   import('./components/MovieDetails/MovieDetails')
 );
-// const Cast = lazy(() => import('./components/Cast/Cast'));
+const Cast = lazy(() => import('./components/Cast/Cast'));
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -21,8 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="movies" element={<Movies />} />
             <Route path="movies/:query" element={<MovieDetails />} />
             <Route path="movie/:movieId" element={<MovieDetails />}>
-              <Route path="cast" element={<MovieDetails />} />
-              <Route path="reviews" element={<MovieDetails />} />
+              <Route path="cast" element={<Cast />} />
+              {/* <Route path="reviews" element={<MovieDetails />} /> */}
             </Route>
           </Route>
         </Routes>

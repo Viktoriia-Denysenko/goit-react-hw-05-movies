@@ -1,5 +1,5 @@
 import s from './MovieCard.module.css';
-import { Link } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 function MovieCard({ movie }) {
   const { poster_path, release_date, title, vote_average, overview, genres } =
@@ -38,6 +38,7 @@ function MovieCard({ movie }) {
           </ul>
         </div>
       </div>
+      <hr />
       <div>
         <h2>Additional information</h2>
         <ul>
@@ -48,6 +49,8 @@ function MovieCard({ movie }) {
             <Link to={`/movie/${movie.id}/reviews`}>Reviews</Link>
           </li>
         </ul>
+        <hr />
+        <Outlet />
       </div>
     </>
   );

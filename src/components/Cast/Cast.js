@@ -1,28 +1,30 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getMovieCredits } from 'components/Api/Api';
 
-function Cast({ id }) {
+function Cast() {
+  const { movieId } = useParams();
   const [cast, setCast] = useState('');
-  console.log(cast);
+
   useEffect(() => {
     async function getCast() {
       try {
-        const cast = await getMovieCredits(id);
+        const cast = await getMovieCredits(movieId);
         setCast(cast);
       } catch (error) {
         toast.error('No movie found');
       }
     }
     getCast();
-  }, [id]);
+  }, [movieId]);
 
   return (
     <div>
       <ul>
         {cast &&
           cast.map(hero => {
-            return <li key="hero.cast_id">{hero.name}</li>;
+            return <li key={hero.id}>{hero.name}</li>;
           })}
       </ul>
     </div>
