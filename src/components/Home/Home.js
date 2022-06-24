@@ -33,9 +33,9 @@ function Home() {
       <h1 className={s.title}>Trending today</h1>
       {loading && <Loader />}
       <ul className={s.list}>
-        {movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+        {movies.map(({ id, title }) => (
+          <li key={id}>
+            <Link to={`/movies/${id}`}>{title}</Link>
           </li>
         ))}
       </ul>

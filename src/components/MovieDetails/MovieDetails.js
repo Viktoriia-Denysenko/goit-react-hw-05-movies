@@ -5,11 +5,10 @@ import Loader from 'components/Loader/Loader';
 import { getMoviesById } from 'components/Api/Api';
 import { FaArrowLeft } from 'react-icons/fa';
 import MovieCard from 'components/MovieCard/MovieCard';
-import Cast from 'components/Cast/Cast';
 import s from './MovieDetails.module.css';
 
 function MovieDetails() {
-  const { movieId } = useParams();
+  const { moviesId } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
@@ -18,9 +17,8 @@ function MovieDetails() {
     async function fetchMovie() {
       setLoading(true);
       try {
-        const movie = await getMoviesById(movieId);
+        const movie = await getMoviesById(moviesId);
         setMovie(movie);
-        console.log(location);
       } catch (error) {
         toast.error('No movie found');
       } finally {
@@ -28,7 +26,7 @@ function MovieDetails() {
       }
     }
     fetchMovie();
-  }, [movieId, location]);
+  }, [moviesId, location]);
 
   return (
     <main>
@@ -38,7 +36,6 @@ function MovieDetails() {
       </Link>
       {loading && <Loader />}
       {movie && <MovieCard movie={movie} />}
-      {/* <Cast id={movieId} /> */}
     </main>
   );
 }

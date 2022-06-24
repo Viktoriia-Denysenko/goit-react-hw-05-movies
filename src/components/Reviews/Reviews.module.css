@@ -1,0 +1,22 @@
+.list{
+    margin: 0 20px 0 20px;
+    list-style: none;
+}
+
+.profile{
+    padding: 0 20px;
+    border: 2px solid rgba(0, 0, 0, 0.384);
+    margin-bottom: 5px;
+}
+
+.profile:last-child {
+    margin-bottom: 0;
+}
+
+.title{
+    font-size: 30px;
+}
+
+.text{
+    font-size: 20px;
+}

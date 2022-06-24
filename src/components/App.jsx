@@ -1,5 +1,6 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { Suspense } from 'react';
 
 export const App = () => {
   let activeStyle = {
@@ -29,8 +30,6 @@ export const App = () => {
           marginLeft: '50px',
           fontWeight: 700,
           fontSize: '25px',
-
-          // borderBottom: '2px solid #000000',
         }}
       >
         <NavLink
@@ -52,9 +51,10 @@ export const App = () => {
           Movies
         </NavLink>
       </nav>
-      {/* <hr style={{ align: 'center', width: '300', color: '#000000' }} /> */}
       <hr />
-      <Outlet />
+      <Suspense fallback="">
+        <Outlet />
+      </Suspense>
       <Toaster />
     </div>
   );

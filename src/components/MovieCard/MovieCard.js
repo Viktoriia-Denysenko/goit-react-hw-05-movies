@@ -1,7 +1,11 @@
+import { Suspense } from 'react';
 import s from './MovieCard.module.css';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import * as Scroll from 'react-scroll';
 
 function MovieCard({ movie }) {
+  const location = useLocation();
   const { poster_path, release_date, title, vote_average, overview, genres } =
     movie;
   const data = release_date
@@ -13,6 +17,12 @@ function MovieCard({ movie }) {
     : 'https://nuft.edu.ua/assets/images/people/no-image.jpg';
 
   const userScore = Number(vote_average) * 10;
+
+  const linkClick = () => {
+    let scroll = Scroll.animateScroll;
+
+    scroll.scrollToBottom();
+  };
   return (
     <>
       <div className={s.wrapper}>
@@ -40,20 +50,51 @@ function MovieCard({ movie }) {
       </div>
       <hr />
       <div>
-        <h2>Additional information</h2>
+        <h2 className={s.subtitle}>Additional information</h2>
         <ul>
-          <li>
-            <Link to={`/movie/${movie.id}/cast`}>Cast</Link>
+          <li className={s.listItem}>
+            <Link
+              onClick={linkClick}
+              to={`cast`}
+              state={{ from: location?.state?.from ?? '/' }}
+            >
+              Cast
+            </Link>
           </li>
-          <li>
-            <Link to={`/movie/${movie.id}/reviews`}>Reviews</Link>
+          <li className={s.listItem}>
+            <Link
+              onClick={linkClick}
+              to={`reviews`}
+              state={{ from: location?.state?.from ?? '/' }}
+            >
+              Reviews
+            </Link>
           </li>
         </ul>
         <hr />
-        <Outlet />
+        <Suspense fallback="">
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );
 }
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    overview: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      })
+    ),
+    id: PropTypes.number.isRequired,
+  }),
+};

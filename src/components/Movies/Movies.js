@@ -14,7 +14,6 @@ function Movies() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // setQuery(event.currentTarget.firstChild.value.toLowerCase().trim());
     setQuery(event.currentTarget.elements.query.value.toLowerCase().trim());
     setSearchParams({
       query: event.currentTarget.elements.query.value.toLowerCase().trim(),
@@ -55,10 +54,10 @@ function Movies() {
       {loading && <Loader />}
       {movies && (
         <ul className={s.movieList}>
-          {movies.map(movie => (
-            <li className={s.movieItem} key={movie.id}>
-              <Link to={`/movie/${movie.id}`} state={{ from: location }}>
-                {movie.title}
+          {movies.map(({ id, title }) => (
+            <li className={s.movieItem} key={id}>
+              <Link to={`/movies/${id}`} state={{ from: location }}>
+                {title}
               </Link>
             </li>
           ))}

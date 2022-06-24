@@ -1,0 +1,27 @@
+
+
+.list{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.profile{
+    flex: 0 0 20%;
+    text-align: center;
+}
+
+.image{
+    width: 200px;
+    height: 300px;
+}
+
+.textWrapper{
+    width: 200px;
+    margin: auto;
+}
+
+.text{
+    font-size: 20px;
+}
