@@ -1,18 +1,14 @@
-.form{
+.form {
     margin-left: 40px;
     margin-right: 20px;
 }
 
-.input{
+.input {
     width: 260px;
     height: 30px;
 }
 
-.button{
+.button {
     width: 60px;
     height: 36px;
-}
-
-.movieList{
-    margin-left: 50px;
 }

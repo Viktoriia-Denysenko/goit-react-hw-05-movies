@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { getMovieCredits } from 'components/Api/Api';
+import { getMovieCredits } from 'services/Api';
 import s from './Cast.module.css';
 
 function Cast() {

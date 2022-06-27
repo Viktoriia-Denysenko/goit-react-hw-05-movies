@@ -1,10 +1,11 @@
-import { Suspense } from 'react';
+import { Suspense, memo } from 'react';
 import s from './MovieCard.module.css';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as Scroll from 'react-scroll';
+import Loader from 'components/Loader/Loader';
 
-function MovieCard({ movie }) {
+const MovieCard = memo(({ movie }) => {
   const location = useLocation();
   const { poster_path, release_date, title, vote_average, overview, genres } =
     movie;
@@ -16,7 +17,7 @@ function MovieCard({ movie }) {
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : 'https://nuft.edu.ua/assets/images/people/no-image.jpg';
 
-  const userScore = Number(vote_average) * 10;
+  const userScore = Math.round(Number(vote_average) * 10);
 
   const linkClick = () => {
     let scroll = Scroll.animateScroll;
@@ -72,13 +73,13 @@ function MovieCard({ movie }) {
           </li>
         </ul>
         <hr />
-        <Suspense fallback="">
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </div>
     </>
   );
-}
+});
 
 export default MovieCard;
 

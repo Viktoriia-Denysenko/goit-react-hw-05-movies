@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getMovies } from 'components/Api/Api';
+import { getMovies } from 'services/Api';
 import Loader from 'components/Loader/Loader';
 import s from './Home.module.css';
 

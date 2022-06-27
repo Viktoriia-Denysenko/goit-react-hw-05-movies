@@ -1,6 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { Suspense } from 'react';
+import Loader from './Loader/Loader';
 
 export const App = () => {
   let activeStyle = {
@@ -52,7 +53,7 @@ export const App = () => {
         </NavLink>
       </nav>
       <hr />
-      <Suspense fallback="">
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
       <Toaster />

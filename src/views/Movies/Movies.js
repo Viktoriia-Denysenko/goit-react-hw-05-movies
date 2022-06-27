@@ -3,7 +3,8 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import toast from 'react-hot-toast';
 import s from './Movies.module.css';
-import { getMovieByQuery } from 'components/Api/Api';
+import { getMovieByQuery } from 'services/Api';
+import Form from 'views/Form/Form';
 
 function Movies() {
   const [movies, setMovies] = useState(null);
@@ -12,12 +13,8 @@ function Movies() {
   const [query, setQuery] = useState(searchParams.get('query') || '');
   const location = useLocation();
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    setQuery(event.currentTarget.elements.query.value.toLowerCase().trim());
-    setSearchParams({
-      query: event.currentTarget.elements.query.value.toLowerCase().trim(),
-    });
+  const handleForm = data => {
+    setQuery(data);
   };
 
   useEffect(() => {
@@ -39,18 +36,7 @@ function Movies() {
 
   return (
     <>
-      <form className={s.form} onSubmit={handleSubmit}>
-        <input
-          className={s.input}
-          type="text"
-          autoComplete="off"
-          name="query"
-          autoFocus
-        ></input>
-        <button type="submit" className={s.button}>
-          Search
-        </button>
-      </form>
+      <Form onSubmit={handleForm} />
       {loading && <Loader />}
       {movies && (
         <ul className={s.movieList}>

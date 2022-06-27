@@ -2,7 +2,7 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import Loader from 'components/Loader/Loader';
-import { getMoviesById } from 'components/Api/Api';
+import { getMoviesById } from 'services/Api';
 import { FaArrowLeft } from 'react-icons/fa';
 import MovieCard from 'components/MovieCard/MovieCard';
 import s from './MovieDetails.module.css';

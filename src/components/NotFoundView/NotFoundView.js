@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import s from '../MovieDetails/MovieDetails.module.css';
+import s from './NotFoundView.module.css';
 
 function NotFoundView() {
   const location = useLocation();
