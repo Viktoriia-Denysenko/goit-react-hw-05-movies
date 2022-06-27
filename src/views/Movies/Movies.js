@@ -15,6 +15,9 @@ function Movies() {
 
   const handleForm = data => {
     setQuery(data);
+    setSearchParams({
+      query: data,
+    });
   };
 
   useEffect(() => {
