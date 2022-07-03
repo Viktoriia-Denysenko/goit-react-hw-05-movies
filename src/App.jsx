@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { Suspense } from 'react';
-import Loader from './Loader/Loader';
+import Loader from './components/Loader/Loader';
 
 export const App = () => {
   let activeStyle = {

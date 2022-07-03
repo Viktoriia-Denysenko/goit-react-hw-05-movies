@@ -4,7 +4,7 @@ import Loader from 'components/Loader/Loader';
 import toast from 'react-hot-toast';
 import s from './Movies.module.css';
 import { getMovieByQuery } from 'services/Api';
-import Form from 'views/Form/Form';
+import Form from 'components/Form/Form';
 
 function Movies() {
   const [movies, setMovies] = useState(null);

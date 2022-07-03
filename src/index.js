@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { App } from 'components/App';
+import { App } from 'App';
 import './index.css';
 
 const Home = lazy(() => import('./views/Home/Home'));
@@ -9,9 +9,7 @@ const Movies = lazy(() => import('./views/Movies/Movies'));
 const MovieDetails = lazy(() => import('./views/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./views/Cast/Cast'));
 const Reviews = lazy(() => import('./views/Reviews/Reviews'));
-const NotFoundView = lazy(() =>
-  import('./components/NotFoundView/NotFoundView')
-);
+const NotFoundView = lazy(() => import('./views/NotFoundView/NotFoundView'));
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
